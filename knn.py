@@ -9,10 +9,10 @@ class KNN:
         self.X_train = X
         self.Y_train = Y
 
-    def euclidean_distance(self, x1, x2):  # تابع اقلیدسی برای محاسبه فاصله
+    def euclidean_distance(self, x1, x2):  
         return np.sqrt(np.sum((x1 - x2)**2))    
 
-    def predict(self, X):  # بزرگ یعنی چندتا دیتا فرستاده شده X
+    def predict(self, X):  
         Y =[]
         for x in X:
             distances =[]  
@@ -21,7 +21,7 @@ class KNN:
                 distances.append(d)
             
             nearest_neighbors  = np.argsort(distances)[0:self.k]
-            result = np.bincount(self.Y_train[nearest_neighbors]) #تابع بینکانت مانند هیستوگرام عمل میکند و میشمارد
+            result = np.bincount(self.Y_train[nearest_neighbors]) 
             y = np.argmax(result)
             Y.append(y)
         return Y 
